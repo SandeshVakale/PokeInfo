@@ -1,11 +1,10 @@
 import {useEffect} from "react";
-import {Canvas, Image, useCanvasRef, Circle} from "@shopify/react-native-skia";
- 
+import { Canvas } from "@shopify/react-native-skia";
+import { PathGradient } from "./src/components/gradientText/PathGradient";
+import React from "react";
 const App = () => {
   return (
-    <Canvas style={{ flex: 1 }}>
-      <Circle r={128} cx={128} cy={128} color="red" />
-    </Canvas>
+      <PathGradient />
   );
 };
 
