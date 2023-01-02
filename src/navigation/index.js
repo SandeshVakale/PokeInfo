@@ -3,14 +3,17 @@ import { View, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTheme, useThemeMode, Text, Button } from '@rneui/themed';
+import { typography } from '../theme';
 import Splash from '../screens/splash';
+import { List } from '../screens/list';
 function HomeScreen() {
 
     const { mode, setMode } = useThemeMode();
     const { theme } = useTheme();
+    const { h1 } = typography;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.colors.background }}>
-      <Text>Home Screen</Text>
+      <Text style={h1}>Home Screen</Text>
       <Button onPress={() => setMode('dark')} title={mode} />
     </View>
   );
@@ -42,7 +45,7 @@ function Navigation() {
         }} name="Splash" component={Splash} />
         <Stack.Screen options={{
             headerShown: false
-        }} name="Home" component={HomeScreen} />
+        }} name="List" component={List} />
       </Stack.Navigator>
     </NavigationContainer>
   );

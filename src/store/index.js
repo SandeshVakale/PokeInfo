@@ -12,10 +12,10 @@ import {
 } from 'redux-persist';
 import {configureStore} from '@reduxjs/toolkit';
 
-import { themeModeModel } from './theme';
+import { listModel } from './list';
 
 const reducers = combineReducers({
-    themeModeModel,
+    listModel,
 });
 const persistConfig = {
     key: 'root',

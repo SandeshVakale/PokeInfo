@@ -11,7 +11,7 @@ useEffect(() =>
     {
         setTimeout(() => 
             {
-                navigation.navigate('Home')
+                navigation.navigate('List')
             }
         , 3000)
     }
