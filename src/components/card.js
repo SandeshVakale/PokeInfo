@@ -10,11 +10,8 @@ import {
     Image,
     Text, 
     useFont,
-    Fill
   } from "@shopify/react-native-skia";
 import { useWindowDimensions, Dimensions, StyleSheet } from "react-native";
-import { useTheme } from "@rneui/themed";
-import { typography } from "../theme";   
 import { ColorModifier } from "../utils/colorModifiers";
 import { GetSpeciesDetails } from "../utils/getSpecies";
 const CardMemo = ({
@@ -22,13 +19,10 @@ const CardMemo = ({
     pokemon,
     navigation,
   }) => {
-
-    const {h2, h5} = typography;
   const image = useImage(pokemon.url);
   const [species, setSpecies] = useState(null);
 
   const { height, width } = useWindowDimensions();
-  const { theme } = useTheme();
   useEffect(() => {
       GetSpeciesDetails(pokemon.name)?.then(data => setSpecies(data.data));
   }, [pokemon.name]);

@@ -1,7 +1,6 @@
 import {useEffect} from "react";
 import { PathGradient } from "../components/gradientText/PathGradient";
 import { useNavigation } from "@react-navigation/native";
-
 import React from "react";
 const Splash = () => {
 
@@ -18,7 +17,7 @@ useEffect(() =>
 ,[])
     
   return (
-      <PathGradient />
+          <PathGradient />
   );
 };
 
