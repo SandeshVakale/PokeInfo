@@ -32,6 +32,10 @@ const CardMemo = ({
   );
   const fontSize = 32;
   const font = useFont(require('../font/Redressed-Regular.ttf'), fontSize);
+  const imageBall = useImage(require("../images/Pokeball.png"));
+  if (!image && !imageBall) {
+    return null;
+  }
   if (font === null) {
     return null;
   }
@@ -50,6 +54,14 @@ const CardMemo = ({
             colors={[lightColor, darkColor]}
           />
         </RoundedRect>
+          <Image
+            image={imageBall}
+            x={width * 0.15}
+            y={150}
+            width={150}
+            height={150}
+            fit="cover"
+          />
         <Image
             image={image}
             fit="contain"
