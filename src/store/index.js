@@ -13,14 +13,16 @@ import {
 import {configureStore} from '@reduxjs/toolkit';
 
 import { listModel } from './list';
+import { detailsModel } from './details';
 
 const reducers = combineReducers({
     listModel,
+    detailsModel,
 });
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    blacklist: [],
+    blacklist: ['listModel', 'detailsModel'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

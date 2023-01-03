@@ -11,7 +11,7 @@ import {
     Text, 
     useFont,
   } from "@shopify/react-native-skia";
-import { useWindowDimensions, Dimensions, StyleSheet } from "react-native";
+import { TouchableOpacity, useWindowDimensions } from "react-native";
 import { ColorModifier } from "../utils/colorModifiers";
 import { GetSpeciesDetails } from "../utils/getSpecies";
 const CardMemo = ({
@@ -40,8 +40,16 @@ const CardMemo = ({
     return null;
   }
     return (
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Details', {
+            pokemon: pokemon,
+            color: {lightColor, darkColor, mainColor},
+            describe: species?.flavor_text_entries[0]?.flavor_text,
+          })
+      }>
       <Canvas key={index} style={{ width: width, height: height * 0.35 }}>
-        <RoundedRect x={32} y={32} width={width * 0.85 } height={height * 0.3 } r={32} color={mainColor}>
+        <RoundedRect x={12} y={32} width={width - 24 } height={height * 0.3 } r={32} color={mainColor}>
           <Shadow dx={12} dy={12} blur={25} color={lightColor} inner />
           <Shadow dx={-12} dy={-12} blur={25} color={darkColor} inner />
           <LinearGradient
@@ -52,7 +60,7 @@ const CardMemo = ({
         </RoundedRect>
           {imageBall && <Image
             image={imageBall}
-            x={width * 0.15}
+            x={40}
             y={150}
             width={150}
             height={150}
@@ -67,18 +75,21 @@ const CardMemo = ({
             height={height * 0.25}
             />}
             {font && <Text
-                x={width * 0.15}
+                x={30}
                 y={70}
                 text={pokemon.name.toLocaleUpperCase()}
                 font={font}
+                color={'white'}
             />}
             {font && species?.shape && <Text
-                x={width * 0.15}
-                y={120}
+                x={30}
+                y={100}
                 text={species.shape.name}
                 font={font}
+                color={'white'}
             />}
       </Canvas>
+      </TouchableOpacity>
     );
   };
 
@@ -98,41 +109,3 @@ const CardMemo = ({
   }
   
   export const Card = React.memo(CardMemo, arePropsEqual);
-
-
-const styles = StyleSheet.create({
-    container: {
-      height: Dimensions.get('window').height * 0.2,
-      width: Dimensions.get('window').width * 0.45,
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      borderRadius: 20,
-      padding: 15,
-      margin: 10,
-      overflow: 'hidden',
-    },
-    image: {
-      position: 'absolute',
-      right: -20,
-      bottom: 0,
-      zIndex: 100,
-      height: Dimensions.get('window').height * 0.12,
-      width: Dimensions.get('window').width * 0.4,
-      resizeMode: 'contain',
-    },
-    subtitleContainer: {
-      padding: 5,
-      paddingHorizontal: 10,
-      borderRadius: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    circle: {
-      height: 120,
-      width: 120,
-      borderRadius: 60,
-      position: 'absolute',
-      right: -20,
-      bottom: -20,
-    },
-  });

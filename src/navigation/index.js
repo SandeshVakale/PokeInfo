@@ -6,18 +6,7 @@ import { useTheme, useThemeMode, Text, Button } from '@rneui/themed';
 import { typography } from '../theme';
 import Splash from '../screens/splash';
 import { List } from '../screens/list';
-function HomeScreen() {
-
-    const { mode, setMode } = useThemeMode();
-    const { theme } = useTheme();
-    const { h1 } = typography;
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.colors.background }}>
-      <Text style={h1}>Home Screen</Text>
-      <Button onPress={() => setMode('dark')} title={mode} />
-    </View>
-  );
-}
+import { Details } from '../screens/details';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +35,9 @@ function Navigation() {
         <Stack.Screen options={{
             headerShown: false
         }} name="List" component={List} />
+      <Stack.Screen options={{
+            headerShown: false
+        }} name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
   );
