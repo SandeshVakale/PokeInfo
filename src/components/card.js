@@ -25,7 +25,7 @@ const CardMemo = ({
   const { height, width } = useWindowDimensions();
   useEffect(() => {
       GetSpeciesDetails(pokemon.name)?.then(data => setSpecies(data.data));
-  }, [pokemon.name]);
+  }, []);
 
   const {lightColor, darkColor, mainColor} = ColorModifier(
     species?.color?.name,
@@ -39,10 +39,6 @@ const CardMemo = ({
   if (font === null) {
     return null;
   }
-
-  if (image === null) {
-    return null;
-  }
     return (
       <Canvas key={index} style={{ width: width, height: height * 0.35 }}>
         <RoundedRect x={32} y={32} width={width * 0.85 } height={height * 0.3 } r={32} color={mainColor}>
@@ -54,22 +50,22 @@ const CardMemo = ({
             colors={[lightColor, darkColor]}
           />
         </RoundedRect>
-          <Image
+          {imageBall && <Image
             image={imageBall}
             x={width * 0.15}
             y={150}
             width={150}
             height={150}
             fit="cover"
-          />
-        <Image
+          />}
+        {image && <Image
             image={image}
             fit="contain"
             x={width * 0.50}
             y={100}
             width={width * 0.4}
             height={height * 0.25}
-            />
+            />}
             {font && <Text
                 x={width * 0.15}
                 y={70}
