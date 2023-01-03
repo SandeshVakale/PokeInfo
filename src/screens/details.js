@@ -106,7 +106,7 @@ export const Details = ({route}) => {
 
   useEffect(() => {
     animate()
-  }, [])
+  }, [details?.stats])
   if (isFetching) {
     return <Loader />;
   }
